@@ -24,7 +24,7 @@
 \fancyfoot[L]{{\footnotesize
               %% We toggle between these:
               % Manuscript submitted for review.\\
-              {\it Urbit Systems Technical Journal} III:1 (2026):  43–67. \\
+              {\it Urbit Systems Technical Journal} III:1 (2026):  1–21. \\
               ~ \\
               Address author correspondence to \authorpatp.
               }}
@@ -32,7 +32,7 @@
 %  Arrange subsequent pages:
 \fancyhf{}
 \fancyhead[LE]{{\urbitfont Urbit Systems Technical Journal}}
-\fancyhead[RO]{Subject Knowledge Analysis}
+\fancyhead[RO]{Subject Knowledge Analysis II}
 \fancyfoot[LE,RO]{\thepage}
 
 %%MANUSCRIPT
@@ -52,7 +52,7 @@ The design choices for the Nock compilation pipeline, which has its roots in the
 
 % We will adjust page numbering in final editing.
 \pagenumbering{arabic}
-\setcounter{page}{43}
+\setcounter{page}{1}
 
 \tableofcontents
 
@@ -172,7 +172,7 @@ $(t |.(+($:t)))
 
 Here \texttt{t} is a trap that accumulates previous values of \texttt{t} in its payload. Each recursive iteration generates a new subject for the \lstinline[style=inlinecode]{$:t} eval in the conditional, infinitely expanding the call stack.
 
-To prevent this, when two calls are checked for simple recursion (that is, whether their subjects straightforwardly nest) and turn out not to be simply recursive, we also check whether the caller's subject is homeomorphically embedded into the callee's (a termination criterion borrowed from online partial evaluation \citep{leuschel-he}): $\text{caller} \unlhd \text{callee}$, defined as follows:
+To prevent this, when two calls are checked for simple recursion (that is, whether their subjects straightforwardly nest) and turn out not to be simply recursive, we also check whether the caller's subject is homeomorphically embedded into the callee's (a termination criterion borrowed from online partial evaluation, \citet{leuschel-he}): $\text{caller} \unlhd \text{callee}$, defined as follows:
 \begin{itemize}
   \item  For every $\textsc{Sock}\;a:\;a \unlhd a$.
   \item  \emph{Coupling rule}: if $a$ and $b$ are $\textsc{Sock}$ cells and $\text{Head}(a)\unlhd\text{Head}(b)$ and $\text{Tail}(a)\unlhd\text{Tail}(b)$, then $a \unlhd b$.
